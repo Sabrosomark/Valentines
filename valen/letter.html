@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Special Letter</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="letter.css" />
+</head>
+
+<body>
+
+    <button class="back-btn" onclick="goBack()">← Back</button>
+
+    <script>
+        function goBack() {
+            window.location.href = "index.html?from=letter";
+        }
+    </script>
+
+
+  <!-- Background shapes -->
+  <div class="bg-shapes">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+  <!-- Envelope -->
+  <div id="envelope-stage">
+    <div class="envelope-container" id="envelope">
+      <div class="envelope">
+        <div class="pocket"></div>
+        <div class="letter-preview"></div>
+        <div class="flap"></div>
+        <div class="seal">❤️</div>
+      </div>
+    </div>
+
+    <button class="open-btn" onclick="openEnvelope()">Open Me</button>
+  </div>
+
+  <!-- Letter Modal -->
+  <div id="letter-view">
+    <div class="love-letter">
+      <button class="close-btn" onclick="closeLetter()">×</button>
+      <h2>My Dearest Valentine,</h2>
+      <p>
+
+      </p>
+      <p>
+        Just like this letter, my heart opens only for you.
+        As long as I live, there will always be someone who is proud of you and loves you endlessly.
+        In every step you take, in every dream you chase, I will be right here, believing in you, supporting you, and choosing you every single day.
+        No matter how hard life gets, please remember that you are never alone.
+        You are valued, you are appreciated, and you are deeply loved more than words could ever explain.
+      </p>
+      <p style="text-align:right;">— Yours always ❤️</p>
+    </div>
+  </div>
+
+  <script src="letter.js"></script>
+</body>
+</html>

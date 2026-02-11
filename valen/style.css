@@ -1,0 +1,470 @@
+#envelope {
+  position: relative;
+  width: 280px;
+  height: 180px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin-left: auto;
+  margin-right: auto;
+  top: 150px;
+  background-color: #d9534f; /* Warm romantic red */
+  box-shadow: 0 0px 25px rgba(217, 83, 79, 0.6);
+}
+
+.front {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 3;
+}
+
+.flap {
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-bottom: 82px solid transparent;
+  /* a little smaller */
+  border-top: 98px solid #d9534f; /* Same romantic red */
+  /* a little larger */
+  transform-origin: top;
+  pointer-events: none;
+}
+
+.pocket {
+  border-left: 140px solid #f5a3a2; /* Soft pinkish red for the pocket */
+  border-right: 140px solid #f5a3a2;
+  border-bottom: 90px solid #ff6f61; /* Lighter romantic red */
+  border-top: 90px solid transparent;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.letter {
+  position: relative;
+  background-color: #fff;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 90%;
+  top: 5%;
+  border-radius: 6px;
+  box-shadow: 0 2px 26px rgba(0, 0, 0, 0.12);
+  font-family: "Dancing Script", cursive;
+}
+
+.letter:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.words {
+  position: absolute;
+  left: 10%;
+  width: 80%;
+
+  font-size: 1.5rem; /* Light romantic tone */
+}
+
+.words.line1 {
+  top: 10%;
+  font-size: 1.1rem;
+  background-color: #ffe6e6;
+  display: inline-block;
+  padding: 4px 10px;
+  width: auto;
+  border-radius: 6px;
+}
+
+.words.line2 {
+  top: 30%;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.words.line3 {
+  top: 50%;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.words.line4 {
+  top: 70%;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.open .flap {
+  transform: rotateX(180deg);
+  transition: transform 0.4s ease, z-index 0.6s;
+  z-index: 1;
+}
+
+.close .flap {
+  transform: rotateX(0deg);
+  transition: transform 0.4s 0.6s ease, z-index 1s;
+  z-index: 5;
+}
+
+.close .letter {
+  transform: translateY(0px);
+  transition: transform 0.4s ease, z-index 1s;
+  z-index: 1;
+}
+
+.open .letter {
+  transform: translateY(-100px);
+  transition: transform 0.4s 0.6s ease, z-index 0.6s;
+  z-index: 2;
+}
+
+.hearts {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.heart {
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  pointer-events: none;
+}
+
+.heart:before,
+.heart:after {
+  position: absolute;
+  content: "";
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: #e60073; /* Deep romantic pink */
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+  pointer-events: none;
+}
+
+.heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+.close .heart {
+  opacity: 0;
+  -webkit-animation: none;
+  animation: none;
+}
+
+.a1 {
+  left: 20%;
+  transform: scale(0.6);
+  opacity: 1;
+  -webkit-animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
+  -moz-animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+
+.a2 {
+  left: 55%;
+  transform: scale(1);
+  opacity: 1;
+  -webkit-animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
+  -moz-animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+
+.a3 {
+  left: 10%;
+  transform: scale(0.8);
+  opacity: 1;
+  -webkit-animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
+  -moz-animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+
+@-webkit-keyframes slideUp {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -600px;
+  }
+}
+@keyframes slideUp {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -600px;
+  }
+}
+@-webkit-keyframes sideSway {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 50px;
+  }
+}
+@keyframes sideSway {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 50px;
+  }
+}
+
+body {
+  min-height: 100vh;
+  background-color: #ffd6e8;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.envlope-wrapper {
+  height: 380px;
+}
+
+.reset {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  transition: gap 0.3s ease;
+
+}
+
+.reset button {
+  font-weight: 800;
+  transition: all 0.2s ease;
+  background-color: #ffffff; /* solid */
+  border: solid 2px #d9534f;
+  border-radius: 6px;
+  color: #d9534f;
+  font-size: 15px;
+  margin: 8px;
+  padding: 12px 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.reset button:hover {
+  background-color: #d9534f;
+  color: #fff;
+}
+
+
+#heart-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-heart {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.4;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(10deg);
+  }
+  100% {
+    transform: translateY(0) rotate(-10deg);
+  }
+}
+
+/* Keep your content above hearts */
+.envlope-wrapper,
+.reset {
+  position: relative;
+  z-index: 2;
+}
+
+#yes {
+  background-color: #d9534f;
+  color: #fff;
+  animation: jump 1.2s ease-in-out infinite;
+}
+
+#yes:hover {
+  background-color: #c64541;
+}
+
+#no {
+  background-color: #ffe6e6;
+}
+
+#no:hover {
+  opacity: 0.7;
+}
+
+@keyframes jump {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  
+}
+
+#no-gif-container {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+#yes-wrapper {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+#no-message {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000;
+  text-align: center;
+
+  white-space: nowrap;   /* force one line */
+  
+  height: 1.6em;
+  line-height: 1.6em;
+  margin-bottom: 6px;
+
+  width: fit-content;    /* expand to text width */
+  max-width: 90vw;       /* safety for small screens */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+#no-gif-container {
+  position: fixed;
+  bottom: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+
+  width: 220px;          /* fixed width */
+  text-align: center;
+}
+
+#no-gif {
+  width: 200px;
+  height: 160px;         /* reserve space */
+  object-fit: contain;
+  display: none;
+  margin: 0 auto;
+}
+
+#yes-result {
+  position: fixed;
+  inset: 0;
+  display: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+
+  text-align: center;
+  z-index: 3;
+}
+
+
+
+#yes-message {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+#yes-gif {
+  width: 360px;          /* nice and big */
+  max-width: 90vw;
+}
+
+
+/* Gift layout */
+.gift-container {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-bottom: 10px;
+}
+
+.gift-box {
+  text-align: center;
+}
+
+.gift-box__emoji {
+  font-size: 5rem;
+}
+
+.gift-box__btn {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.gift-box__emoji--claimed {
+  transition: transform 500ms ease;
+  transform: scale(1.5) rotate(12deg);
+}
+
+.gift-box__message {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  transition: all 500ms ease;
+}
+
+.gift-box__message--hidden {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+@keyframes joggle {
+  0%, 33%, 100% { transform: rotate(0deg); }
+  3.33% { transform: rotate(-10deg); }
+  6.67% { transform: rotate(12deg); }
+  10% { transform: rotate(-10deg); }
+  13.33% { transform: rotate(9deg); }
+  16.67% { transform: rotate(0deg); }
+}
+
+.joggle {
+  animation: joggle 4.5s ease-in-out infinite;
+}
+

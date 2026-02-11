@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Invitation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- 🎁 Stimulus + Confetti -->
+  <script type="module">
+    import { Application, Controller } from "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3.2.2/+esm";
+    import confetti from "https://cdn.skypack.dev/canvas-confetti";
+
+    const application = Application.start();
+
+    class GiftBoxController extends Controller {
+      static targets = ["emoji", "message"];
+
+      claim() {
+        if (this.element.classList.contains("opened")) return;
+        this.element.classList.add("opened");
+
+        this.emojiTarget.classList.remove("joggle");
+        void this.emojiTarget.offsetWidth;
+        this.emojiTarget.classList.add("gift-box__emoji--claimed");
+
+        setTimeout(() => {
+          this.messageTarget.classList.remove("gift-box__message--hidden");
+          this.emojiTarget.hidden = true;
+
+          confetti({
+            particleCount: 200,
+            spread: 100,
+            origin: { y: 0.25 },
+          });
+
+          const redirectUrl = this.element.dataset.redirect;
+          if (redirectUrl) {
+            setTimeout(() => {
+              window.location.href = redirectUrl;
+            }, 1200);
+          }
+
+        }, 500);
+      }
+    }
+
+    application.register("gift-box", GiftBoxController);
+  </script>
+
+</head>
+
+<body>
+
+  <!-- 💌 Envelope -->
+  <div class="envlope-wrapper">
+    <div id="envelope" class="close">
+      <div class="front flap"></div>
+      <div class="front pocket"></div>
+      <div class="letter">
+        <div class="words line1">My Love</div>
+        <div class="words line2">Will you</div>
+        <div class="words line3">be my</div>
+        <div class="words line4">Valentine?</div>
+      </div>
+      <div class="hearts">
+        <div class="heart a1"></div>
+        <div class="heart a2"></div>
+        <div class="heart a3"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ❤️ Yes / No Buttons -->
+  <div class="reset" id="choiceButtons" style="display: none;">
+    <div id="yes-wrapper">
+      <button id="yes">Yes 💖</button>
+    </div>
+    <button id="no">No</button>
+  </div>
+
+  <!-- 😢 No Section -->
+  <div id="no-gif-container">
+    <div id="no-message"></div>
+    <img id="no-gif" alt="sad gif" />
+  </div>
+
+  <!-- 💖 YES RESULT -->
+  <div id="yes-result" style="display: none;">
+
+    <!-- 🎁 GIFT BOXES -->
+    <div class="gift-container">
+
+      <!-- Gift 1 (Redirects) -->
+      <div class="gift-box"
+           data-controller="gift-box"
+           data-action="click->gift-box#claim"
+           data-redirect="flower.html">
+
+        <div class="gift-box__emoji joggle"
+             data-gift-box-target="emoji">🎁</div>
+
+        <div class="gift-box__message gift-box__message--hidden"
+             data-gift-box-target="message">
+          💖 Flowers for you 💖
+        </div>
+      </div>
+
+      <!-- Gift 2 (No Redirect) -->
+      <div class="gift-box"
+           data-controller="gift-box"
+           data-action="click->gift-box#claim"
+           data-redirect ="letter.html">
+
+        <div class="gift-box__emoji joggle"
+             data-gift-box-target="emoji">🎁</div>
+
+        <div class="gift-box__message gift-box__message--hidden"
+             data-gift-box-target="message">
+          💕 A letter 💕
+        </div>
+      </div>
+
+    </div>
+
+    <div id="yes-message">Yeyyy, I love you</div>
+    <img id="yes-gif" src="images/image7.gif" alt="happy gif" />
+
+  </div>
+
+  <!-- 🌸 Background Hearts -->
+  <div id="heart-bg"></div>
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
